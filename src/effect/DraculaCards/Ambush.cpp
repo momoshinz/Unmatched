@@ -24,6 +24,9 @@ void Ambush::apply(Game &game, Fighter &fighter, Fighter &target, const Card &se
         return;
     }
 
+    cout << "\n========================================\n";
+    cout << "\n-< Administer Aid >- ACTIVATED!\n";
+
     srand(time(0));
     int randomCard = rand() % opponentHand.getSize();
     Card* discardedCard = opponentHand.removeCard(randomCard);
@@ -35,6 +38,7 @@ void Ambush::apply(Game &game, Fighter &fighter, Fighter &target, const Card &se
     int boostValue = discardedCard->getBoost();
     fighter.addTempAttackBoost(boostValue);
     cout << "\n[+] Ambush gains +" << boostValue << " attack from discarded card's boost!\n";
+    cout << "\n========================================\n";
 }
 
 string Ambush::getDescription() const

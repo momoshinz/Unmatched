@@ -19,6 +19,9 @@ void BaptismOfBlood::apply(Game &game, Fighter &fighter, Fighter &target, const 
         throw runtime_error("\n[!] ERROR : Baptism Of Blood can only be used by Dracula!\n");
     }
 
+    cout << "\n========================================\n";
+    cout << "\n-< Administer Aid >- ACTIVATED!\n";
+
     fighter.heal(2);
     cout << endl;
     cout << "[+] " << fighter.getName() << " recovered 2 health!" << endl;
@@ -82,6 +85,7 @@ void BaptismOfBlood::apply(Game &game, Fighter &fighter, Fighter &target, const 
             defeatedSister->setPosition(targetSpace);
             targetSpace->setFighter(defeatedSister);
             cout << "\n[+] " << defeatedSister->getName() << " has been revived in Dracula's zone.\n";
+            cout << "\n========================================\n";
         }
         else
         {

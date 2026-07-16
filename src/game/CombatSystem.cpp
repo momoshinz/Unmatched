@@ -158,7 +158,7 @@ void CombatSystem::applyEffects(Timing timing,
 {
     if (card.isEffectsCanceled())
     {
-        cout << "\n[.] Effects of " << card.getName() << " are canceled by the FeintDracula!\n";
+        cout << "\n[!] Effects of " << card.getName() << " are canceled by the Feint!\n";
         return;
     }
 

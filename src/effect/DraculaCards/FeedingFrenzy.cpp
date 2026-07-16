@@ -47,7 +47,7 @@ void FeedingFrenzy::apply(Game &game, Fighter &fighter, Fighter &target, const C
         {
             for(ZoneType Szones : sisterZones)
             {
-                if(targetZones == sisterZones)
+                if(Tzones == Szones)
                 {
                     sameZone = true;
                     break;
@@ -64,7 +64,7 @@ void FeedingFrenzy::apply(Game &game, Fighter &fighter, Fighter &target, const C
         }
     }
     fighter.addTempAttackBoost(sisterCount);
-    cout << "\n[+] " << sisterCount << "Sisters in the same zone as the target!\n";
+    cout << "\n[+] " << sisterCount << " Sister(s) in the same zone as the target!\n";
     cout << "\n[+] Attack value increased by " << sisterCount << ".\n";
     cout << "\n[.] Feeding Frenzy activated.\n";
 }

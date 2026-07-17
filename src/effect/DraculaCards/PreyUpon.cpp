@@ -55,6 +55,8 @@ void PreyUpon::apply(Game &game, Fighter &fighter, Fighter &target, const Card &
         cerr << "\n[!] ERROR : No adjacent opponent found!\n";
         return;
     }
+    cout << "\n========================================\n";
+    cout << "\n-< Prey Upon >- ACTIVATED!\n";
 
     int totalDamage = 0;
     cout << "\n[.] Affected fighters:\n";
@@ -68,7 +70,7 @@ void PreyUpon::apply(Game &game, Fighter &fighter, Fighter &target, const Card &
     fighter.heal(totalDamage);
     cout << "\n[-] Total damage amount: " << totalDamage << "\n";
     cout << "\n[+] " << fighter.getName() << " recovered " << totalDamage << " health!\n";
-    cout << "\n[.] Prey Upon activated successfully!\n";
+    cout << "\n========================================\n";
 }
 
 string PreyUpon::getDescription() const

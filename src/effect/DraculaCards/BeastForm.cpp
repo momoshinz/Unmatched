@@ -28,6 +28,9 @@ void BeastForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card 
         cout << "\n[!] ERROR : Your hand is EMPTY. NO card to discard!\n";
         return;
     }
+    cout << "\n========================================\n";
+    cout << "\n-< BeastForm >- ACTIVATED!\n";
+
     cout << "\n[.] Your hand :\n";
     hand.display();
 
@@ -94,11 +97,9 @@ void BeastForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card 
     }
 
     fighter.addTempAttackBoost(discarded);
-    cout << "\n========================================";
-    cout << "\n[.] Beastform activated!\n";
     cout << "\n[+] " << discarded << " card(s) discarded.\n";
     cout << "\n[+] Attack value increased by " << discarded << ".\n";
-    cout << "========================================\n";
+    cout << "\n========================================\n";
 }
 
 string BeastForm::getDescription() const

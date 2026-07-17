@@ -24,12 +24,14 @@ void LookIntoMyEyes::apply(Game &game, Fighter &fighter, Fighter &target, const 
         cerr << "\n[!] ERROR : Opponent has no card to cancel.\n";
         return;
     }
+    cout << "\n========================================\n";
+    cout << "\n-< Look Into My Eyes >- ACTIVATED!\n";
 
     int opponentBoost = opponentCard->getBoost();
     fighter.enableOpponentBoostValue();
     cout << "\n[+] Opponent's attack card boost: " << opponentBoost << "\n";
     cout << "\n[+] Adding " << opponentBoost << " to defense value!\n";
-    cout << "\n[.] Look Into My Eyes activard!\n";
+    cout << "\n========================================\n";
 }
 
 string LookIntoMyEyes::getDescription() const

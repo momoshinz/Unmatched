@@ -26,10 +26,11 @@ void FeintDracula::apply(Game &game, Fighter &fighter, Fighter &target, const Ca
         cerr << "\n[!] ERROR : Opponent's card has no effect to cancel.\n";
         return;
     }
-
+    cout << "\n========================================\n";
+    cout << "\n-< Feint >- ACTIVATED!\n";
     opponentCard->cancelEffects();
     cout << "\n[+] Effects of " << opponentCard->getName() << " have been canceled!\n";
-    cout << "\n[.] Feint activated!\n";
+    cout << "\n========================================\n";
 }
 
 string FeintDracula::getDescription() const

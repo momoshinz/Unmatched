@@ -20,7 +20,7 @@ void BaptismOfBlood::apply(Game &game, Fighter &fighter, Fighter &target, const 
     }
 
     cout << "\n========================================\n";
-    cout << "\n-< Administer Aid >- ACTIVATED!\n";
+    cout << "\n-< Baptism Of Blood >- ACTIVATED!\n";
 
     fighter.heal(2);
     cout << endl;

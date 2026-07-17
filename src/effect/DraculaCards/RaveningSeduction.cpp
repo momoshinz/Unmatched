@@ -25,6 +25,9 @@ void RaveningSeduction::apply(Game &game, Fighter &fighter, Fighter &target, con
         throw runtime_error("\n[!] ERROR : Ravening Seduction can only be used by Sisters!\n");
     }
 
+    cout << "\n========================================\n";
+    cout << "\n-< Ravening Seduction >- ACTIVATED!\n";
+
     Board &board = game.getBoard();
     vector<Fighter *> fighters;
     cout << "\n[?] Choose a Fighter to move :\n";
@@ -100,6 +103,7 @@ void RaveningSeduction::apply(Game &game, Fighter &fighter, Fighter &target, con
     {
         selected->takeDamage(damage);
         cout << "\n[-] " << selected->getName() << " took " << damage << " damage.\n";
+        cout << "\n========================================\n";
     }
     else
     {

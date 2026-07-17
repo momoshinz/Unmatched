@@ -34,6 +34,8 @@ void MistForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card &
         cout << "\n[!] ERROR : No empty home available.\n";
         return;
     }
+    cout << "\n========================================\n";
+    cout << "\n-< MistForm >- ACTIVATED!\n";
 
     cout << "\n========================================\n";
     cout << "\n[.] Choose a space to go:\n";
@@ -63,7 +65,7 @@ void MistForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card &
 
     game.getTurnManager().addAction();
     cout << "\n[+] " << fighter.getName() << " gain 1 extra action!\n";
-    cout << "\n[.] Mistform activated successfully!\n";
+    cout << "\n========================================\n";
 }
 
 string MistForm::getDescription() const

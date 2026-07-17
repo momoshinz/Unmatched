@@ -30,6 +30,11 @@ void Dash::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self
         cerr << "\n[.] NO reachable empty home.\n";
         return;
     }
+
+    cout << "\n========================================\n";
+    cout << "\n-< Dash >- ACTIVATED!\n";
+
+
     cout << "\n========================================";
     cout << "\n[.] Choose a destination (up to 3 homes away) :\n";
     cout << "========================================\n";
@@ -53,6 +58,7 @@ void Dash::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self
         cout << "\n[.] " << fighter.getName() << " moved from home "
              << currentPos->getId() << " to home " << destination->getId() << "!\n";
         cout << "[.] Dash ACTIVATED successfully!\n";
+        cout << "\n========================================\n";
     }
     else
     {

@@ -56,6 +56,9 @@ void ThirstForSustenance::apply(Game &game, Fighter &fighter, Fighter &target, c
     }
 
     cout << "\n========================================\n";
+    cout << "\n-< Thirst For Sustenance >- ACTIVATED!\n";
+
+    cout << "\n========================================\n";
     cout << "[?] Choose where to move Dracula :\n";
     cout << "========================================\n";
 
@@ -74,6 +77,7 @@ void ThirstForSustenance::apply(Game &game, Fighter &fighter, Fighter &target, c
 
     board.moveFighter(dracula, availableSpaces[choice-1]);
     cout << "\n[o] Dracula moved next to " << target.getName() << ".\n";
+    cout << "\n========================================\n";
 }
 
 string ThirstForSustenance::getDescription() const

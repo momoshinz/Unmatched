@@ -25,7 +25,7 @@ void Ambush::apply(Game &game, Fighter &fighter, Fighter &target, const Card &se
     }
 
     cout << "\n========================================\n";
-    cout << "\n-< Administer Aid >- ACTIVATED!\n";
+    cout << "\n-< Ambush >- ACTIVATED!\n";
 
     srand(time(0));
     int randomCard = rand() % opponentHand.getSize();

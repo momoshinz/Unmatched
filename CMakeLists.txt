@@ -68,9 +68,9 @@ set(SOURCES
 )
 
 # Build the executable
-add_executable(dinapipi ${SOURCES})
+add_executable(Unmatched ${SOURCES})
 
-target_link_libraries(dinapipi
+target_link_libraries(Unmatched
     PRIVATE
         ftxui::screen
         ftxui::dom

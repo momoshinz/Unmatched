@@ -15,8 +15,8 @@ class Deck
         ~Deck();
 
         void shuffle();
-
         Card *drawCard();
+        void addCopies(const Card &card, int count);
 
         void addCard(Card *card);
 
@@ -25,9 +25,6 @@ class Deck
 
         const vector<Card *> &getCards() const;
 
-        void display() const;
-        void addCopies(const Card &card, int count);
-        
         static void DraculaDeck(Deck& deck);
         static void SherlockDeck(Deck& deck);
 };

@@ -69,17 +69,6 @@ const vector<Card *> &Deck::getCards() const
     return cards;
 }
 
-void Deck::display() const
-{
-    cout << "\n========== DECK ==========\n";
-
-    for (Card *card : cards)
-    {
-        card->display();
-        cout << endl;
-    }
-}
-
 void Deck::addCopies(const Card &card, int count)
 {
     for (int i = 1; i <= count; i++)

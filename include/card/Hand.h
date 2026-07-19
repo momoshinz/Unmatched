@@ -15,12 +15,10 @@ class Hand
         ~Hand() = default;
 
         void addCard(Card *card);
-
         Card *removeCard(int index);
+        bool isEmpty() const;
 
         Card *getCard(int index) const;
-
-        bool isEmpty() const;
         int getSize() const;
 
         const vector<Card *> &getCards() const;

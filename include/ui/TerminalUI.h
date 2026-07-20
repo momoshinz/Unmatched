@@ -22,8 +22,7 @@ private:
     vector<CellPosition> homePositions;
     void drawStaticMap(vector<string> &canvas) const;
     void drawHomes(vector<string> &canvas) const;
-    void drawFighters(vector<string> &canvas,
-                      const vector<Player *> &players) const;
+    void drawFighters(vector<string> &canvas, const vector<Player *> &players) const;
     string getColor(Fighter *fighter) const;
     string getSymbol(Fighter *fighter) const;
 
@@ -32,8 +31,7 @@ public:
     ~TerminalUI() = default;
 
     void showBoard(const Board &board, const vector<Player *> &players) const;
-    vector<string> buildBoard(const Board &board,
-                              const vector<Player *> &players) const;
+    vector<string> buildBoard(const Board &board, const vector<Player *> &players) const;
     void buildInfoPanel(vector<string> &panel, const Game &game) const;
     void buildHeroLocationPanel(vector<string> &panel, const Game &game) const;
     void buildSidekickLocationPanel(vector<string> &panel, const Game &game) const;

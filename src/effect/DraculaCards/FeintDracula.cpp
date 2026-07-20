@@ -27,10 +27,10 @@ void FeintDracula::apply(Game &game, Fighter &fighter, Fighter &target, const Ca
         return;
     }
     cout << "\n========================================\n";
-    cout << "\n-< Feint >- ACTIVATED!\n";
+    cout << "-< Feint >- ACTIVATED!\n";
     opponentCard->cancelEffects();
-    cout << "\n[+] Effects of " << opponentCard->getName() << " have been canceled!\n";
-    cout << "\n========================================\n";
+    cout << "[+] Effects of " << opponentCard->getName() << " have been canceled!\n";
+    cout << "========================================\n";
 }
 
 string FeintDracula::getDescription() const

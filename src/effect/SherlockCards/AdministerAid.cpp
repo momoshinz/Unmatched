@@ -65,7 +65,7 @@ void AdministerAid::apply(Game &game,
         throw runtime_error("\n[!] ERROR : There is NO empty adjacent home to Sherlock!\n");
     }
 
-    cout << "\n========================================\n";
+    cout << "\n========================================";
     cout << "\n-< Administer Aid >- ACTIVATED!\n";
 
     cout << "\nAvailable destinations for Dr. Watson :\n";
@@ -109,7 +109,7 @@ void AdministerAid::apply(Game &game,
         cout << "[!] Deck is empty. No card drawn.\n";
     }
 
-    cout << "\n========================================\n";
+    cout << "========================================\n";
 }
 
 string AdministerAid::getDescription() const

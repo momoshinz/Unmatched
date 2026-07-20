@@ -28,7 +28,7 @@ void FeintSherlock::apply(Game &game, Fighter &fighter, Fighter &target, const C
     }
 
     opponentCard->cancelEffects();
-    cout << "========================================\n";
+    cout << "========================================";
     cout << "\n-< feint >- ACTIVATED!\n";
     cout << "\n[+] Effects of " << opponentCard->getName() << " have been CANCELED!\n";
     cout << "========================================\n";

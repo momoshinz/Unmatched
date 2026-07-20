@@ -35,15 +35,15 @@ void MistForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card &
         return;
     }
     cout << "\n========================================\n";
-    cout << "\n-< MistForm >- ACTIVATED!\n";
+    cout << "-< MistForm >- ACTIVATED!\n";
 
-    cout << "\n[.] Choose a home to go:\n";
+    cout << "\n[o] Choose a home to go :\n";
     
     for(int i=0 ; i<targetSpaces.size() ; i++)
     {
-        cout << "> " << i+1 << ". home " << targetSpaces[i]->getId() << endl;
+        cout << i+1 << ". home " << targetSpaces[i]->getId() << endl;
     }
-    cout << "\nEnter your choice:";
+    cout << "\n> Enter your choice :";
     int choice;
     cin >> choice;
     if(choice < 1 || choice > targetSpaces.size())
@@ -59,11 +59,11 @@ void MistForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card &
     }
     fighter.setPosition(chosenSpace);
     chosenSpace->setFighter(&fighter);
-    cout << "\n[.] " << fighter.getName() << " moved to home " << chosenSpace->getId() << "!\n";
+    cout << "\n[+] " << fighter.getName() << " moved to home " << chosenSpace->getId() << "!\n";
 
     game.getTurnManager().addAction();
-    cout << "\n[+] " << fighter.getName() << " gain 1 extra action!\n";
-    cout << "\n========================================\n";
+    cout << "[+] " << fighter.getName() << " gain 1 extra action!\n";
+    cout << "========================================\n";
 }
 
 string MistForm::getDescription() const

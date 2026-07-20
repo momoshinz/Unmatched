@@ -25,13 +25,13 @@ void LookIntoMyEyes::apply(Game &game, Fighter &fighter, Fighter &target, const 
         return;
     }
     cout << "\n========================================\n";
-    cout << "\n-< Look Into My Eyes >- ACTIVATED!\n";
+    cout << "-< Look Into My Eyes >- ACTIVATED!\n";
 
     int opponentBoost = opponentCard->getBoost();
     fighter.enableOpponentBoostValue();
-    cout << "\n[+] Opponent's attack card boost: " << opponentBoost << "\n";
-    cout << "\n[+] Adding " << opponentBoost << " to defense value!\n";
-    cout << "\n========================================\n";
+    cout << "[+] Opponent's attack card boost: " << opponentBoost << "\n";
+    cout << "[+] Adding " << opponentBoost << " to defense value!\n";
+    cout << "========================================\n";
 }
 
 string LookIntoMyEyes::getDescription() const

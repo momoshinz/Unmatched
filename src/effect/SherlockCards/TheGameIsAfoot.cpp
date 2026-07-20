@@ -35,9 +35,9 @@ void TheGameIsAfoot::apply(Game &game, Fighter &fighter, Fighter &target, const 
         cerr << "\n[!] NO reachable empty home.\n";
         return;
     }
-    cout << "\n========================================";
-    cout << "\n[.] Choose a destination (up to 3 homes away) :\n";
-    cout << "========================================\n";
+    cout << "\n==============================================";
+    cout << "\n[o] Choose a destination { up to 3 homes away } :\n";
+    cout << "===============================================\n";
 
     for (int i = 0; i < reachableSpaces.size(); i++)
     {
@@ -59,7 +59,7 @@ void TheGameIsAfoot::apply(Game &game, Fighter &fighter, Fighter &target, const 
         cout << "-< The Game Is Afoot >- ACTIVATED!\n";
         cout << "\n[+] " << fighter.getName() << " moved from home "
              << currentPos->getId() << " to home " << destination->getId() << "!\n";
-        cout << "\n========================================\n";
+        cout << "========================================\n";
     }
     else
     {

@@ -42,8 +42,7 @@ class CombatSystem
         Card *getAttackCard() const;
         Card *getDefenceCard() const;
         bool isCombatResolved() const;
-        bool canFighterPlayCard(const Fighter &fighter,
-                                const Card &card) const;
+        bool canFighterPlayCard(const Fighter &fighter, const Card &card) const;
 
 };
 #endif

@@ -6,10 +6,7 @@
 class Sidekick : public Fighter
 {
     public:
-        Sidekick(const string& name,
-                int maxHealth,
-                int movement,
-                AttackType attackType);
+        Sidekick(const string& name, int maxHealth, int movement, AttackType attackType);
 
         ~Sidekick() = default;
 

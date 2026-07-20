@@ -27,16 +27,16 @@ void Dash::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self
     vector<Space *> reachableSpaces = game.getBoard().getAvailableMoves(&fighter, 3);
     if (reachableSpaces.empty())
     {
-        cerr << "\n[.] NO reachable empty home.\n";
+        cerr << "\n[!] NO reachable empty home.\n";
         return;
     }
 
     cout << "\n========================================\n";
-    cout << "\n-< Dash >- ACTIVATED!\n";
+    cout << "-< Dash >- ACTIVATED!\n";
 
 
     cout << "\n========================================";
-    cout << "\n[.] Choose a destination (up to 3 homes away) :\n";
+    cout << "\n[o] Choose a destination { up to 3 homes away } :\n";
     cout << "========================================\n";
 
     for (int i = 0; i < reachableSpaces.size(); i++)
@@ -44,7 +44,7 @@ void Dash::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self
         cout << "\n> " << i + 1 << ". home" << reachableSpaces[i]->getId() << endl;
     }
 
-    cout << "\n> Enter your choice (1 to " << reachableSpaces.size() << ") : ";
+    cout << "\n> Enter your choice { 1 to " << reachableSpaces.size() << " } : ";
     int choice;
     cin >> choice;
     if (choice < 1 || choice > reachableSpaces.size())
@@ -55,10 +55,9 @@ void Dash::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self
     Space *destination = reachableSpaces[choice - 1];
     if (game.getBoard().moveFighter(&fighter, destination))
     {
-        cout << "\n[.] " << fighter.getName() << " moved from home "
+        cout << "\n[+] " << fighter.getName() << " moved from home "
              << currentPos->getId() << " to home " << destination->getId() << "!\n";
-        cout << "[.] Dash ACTIVATED successfully!\n";
-        cout << "\n========================================\n";
+        cout << "========================================\n";
     }
     else
     {

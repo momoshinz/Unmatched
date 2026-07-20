@@ -35,11 +35,11 @@ void CounterPunch::apply(Game &game,
     {
         target.takeDamage(2);
 
-        cout << "\n========================================\n";
+        cout << "\n========================================";
         cout << "\n-< counter punch PUNCH >- ACTIVATED!\n";
         cout << "[-] " << target.getName()
              << " takes 2 damage.\n";
-        cout << "\n========================================\n";
+        cout << "========================================\n";
     }
     else
     {

@@ -23,10 +23,7 @@ protected:
     bool useOpponentBoostValue;
 
 public:
-    Fighter(const string &name,
-            int maxHealth,
-            int movement,
-            AttackType attackType);
+    Fighter(const string &name, int maxHealth, int movement, AttackType attackType);
     virtual ~Fighter() = default;
     void takeDamage(int damage);
     void heal(int amount);

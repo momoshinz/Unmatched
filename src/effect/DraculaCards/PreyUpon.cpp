@@ -56,21 +56,21 @@ void PreyUpon::apply(Game &game, Fighter &fighter, Fighter &target, const Card &
         return;
     }
     cout << "\n========================================\n";
-    cout << "\n-< Prey Upon >- ACTIVATED!\n";
+    cout << "-< Prey Upon >- ACTIVATED!\n";
 
     int totalDamage = 0;
-    cout << "\n[.] Affected fighters:\n";
+    cout << "\n[o] Affected fighters :\n";
     for(auto opponent : adjacentOpponents)
     {
         opponent->takeDamage(1);
         totalDamage++;
-        cout << "\n> " << opponent->getName() << " took 1 Damage!\n";
+        cout << "> " << opponent->getName() << " took 1 Damage!\n";
     }
 
     fighter.heal(totalDamage);
-    cout << "\n[-] Total damage amount: " << totalDamage << "\n";
-    cout << "\n[+] " << fighter.getName() << " recovered " << totalDamage << " health!\n";
-    cout << "\n========================================\n";
+    cout << "[-] Total damage amount : " << totalDamage << "\n";
+    cout << "[+] " << fighter.getName() << " recovered " << totalDamage << " health!\n";
+    cout << "========================================\n";
 }
 
 string PreyUpon::getDescription() const

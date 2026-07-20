@@ -303,7 +303,7 @@ void Game::initialize()
 
     turnManager.startGame(younger, older);
 
-    cout << "\n===============< ** GAME START ** >===============\n";
+    cout << "\n===============< ** GAME STARTED ** >===============\n";
 }
 
 const vector<Player *> &Game::getPlayers() const
@@ -414,7 +414,7 @@ Fighter *Game::selectTarget(Player &currentPlayer, Fighter *user)
         return nullptr;
     }
 
-    cout << "\n========== Choose Target ==========\n";
+    cout << "\n==========( Choose Target )==========\n";
 
     for (size_t i = 0; i < targets.size(); i++)
     {
@@ -435,6 +435,7 @@ Fighter *Game::selectTarget(Player &currentPlayer, Fighter *user)
     }
 
     int choice;
+    cout << "~~> ";
 
     cin >> choice;
 

@@ -40,7 +40,7 @@ void EducationNeverEnds::apply(Game &game,
              << (drawn == 1 ? "" : "s") << ".\n";
     }
 
-    cout << "\n========================================\n";
+    cout << "========================================\n";
 }
 
 string EducationNeverEnds::getDescription() const

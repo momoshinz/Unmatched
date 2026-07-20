@@ -28,20 +28,20 @@ void BeastForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card 
         cout << "\n[!] ERROR : Your hand is EMPTY. NO card to discard!\n";
         return;
     }
-    cout << "\n========================================\n";
+    cout << "\n========================================";
     cout << "\n-< BeastForm >- ACTIVATED!\n";
 
-    cout << "\n[.] Your hand :\n";
+    cout << "\nYour hand :\n";
     hand.display();
 
     cout << "\n========================================";
-    cout << "\n[.] Choose a card to discard:\n";
+    cout << "\n[o] Choose a card to discard :\n";
     cout << "========================================\n";
     for(int i=0 ; i<hand.getSize() ; i++)
     {
         cout << "> " << i+1 << ". " << hand.getCard(i)->getName() << endl;
     }
-    cout << "\n> Enter number (0 = finish) :\n";
+    cout << "\n> Enter number { 0 = finish } :\n";
     
     vector<int> selectedCards;
     vector<bool> isSelected(hand.getSize(), false);
@@ -49,6 +49,7 @@ void BeastForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card 
     {
         int choice;
         cin >> choice;
+        cout << "~~> ";
         if(choice == 0)
         {
             break;
@@ -56,28 +57,28 @@ void BeastForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card 
         if(choice < 1 || choice > hand.getSize())
         {
             cout << "\n[!] ERROR : Invalid number! try again.\n";
-            cout << "\n> Enter number (0 = finish) :\n";
+            cout << "\n> Enter number { 0 = finish } :\n";
             continue;
         }
         if(isSelected[choice-1])
         {
             cout << "\n[!] Card already selected. choose another one.\n";
-            cout << "\n> Enter number (0 = finish) :\n";
+            cout << "\n> Enter number { 0 = finish } :\n";
             continue;;
         }
         isSelected[choice-1] = true;
         selectedCards.push_back(choice-1);
         cout << "\n[+] Selected : " << hand.getCard(choice-1)->getName() << endl;
-        cout << "\n> Enter number (0 = finish):\n";
+        cout << "\n> Enter number { 0 = finish } :\n";
     }
     if(selectedCards.empty())
     {
-        cout << "\n[.] No cards discarded.\n";
+        cout << "\n[!] No cards discarded.\n";
         return;
     }
 
     cout << "\n========================================";
-    cout << "\n[.] Selected cards to discard :\n";
+    cout << "\n[o] Selected cards to discard :\n";
     cout << "========================================\n";
     for(int index : selectedCards)
     {
@@ -99,7 +100,7 @@ void BeastForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card 
     fighter.addTempAttackBoost(discarded);
     cout << "\n[+] " << discarded << " card(s) discarded.\n";
     cout << "\n[+] Attack value increased by " << discarded << ".\n";
-    cout << "\n========================================\n";
+    cout << "========================================\n";
 }
 
 string BeastForm::getDescription() const

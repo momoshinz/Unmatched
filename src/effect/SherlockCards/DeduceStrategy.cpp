@@ -21,7 +21,7 @@ void DeduceStrategy::apply(Game &game,
 
     fighter.enableOpponentBoostValue();
 
-    cout << "\n========================================\n";
+    cout << "\n========================================";
     cout << "-< Deduce Strategy >- ACTIVATED!\n";
     cout << "[+] Opponent's printed combat value is now replaced\n";
     cout << "    by its BOOST value.\n";

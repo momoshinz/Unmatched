@@ -26,11 +26,11 @@ void RaveningSeduction::apply(Game &game, Fighter &fighter, Fighter &target, con
     }
 
     cout << "\n========================================\n";
-    cout << "\n-< Ravening Seduction >- ACTIVATED!\n";
+    cout << "-< Ravening Seduction >- ACTIVATED!\n";
 
     Board &board = game.getBoard();
     vector<Fighter *> fighters;
-    cout << "\n[?] Choose a Fighter to move :\n";
+    cout << "[?] Choose a Fighter to move :\n";
     cout << "========================================\n";
 
     Hero *hero = player->getHero();

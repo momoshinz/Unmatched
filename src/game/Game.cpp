@@ -1100,7 +1100,7 @@ void Game::run()
     catch (const exception &e)
     {
         cerr << "\n[!] Game initialization failed : " << e.what() << endl;
-        throw;
+        return;
     }
 }
 

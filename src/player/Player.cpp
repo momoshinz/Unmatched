@@ -13,7 +13,7 @@ using namespace std;
 Player::Player(int age)
     : age(age), hero(nullptr)
 {
-    if (age <= 0)
+    if (age < 0)
     {
         throw invalid_argument("\n[!] ERROR : Age cannot be NEGATIVE!\n");
     }

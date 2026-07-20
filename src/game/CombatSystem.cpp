@@ -115,7 +115,7 @@ int CombatSystem::calculateFinalDefenseValue(const Card &card,
 {
     if (user.shouldUseOpponentBoostValue())
     {
-        return attackCard->getBoost();
+        return user.getOpponentBoostValue();
     }
     return card.getCombatValue();
 }

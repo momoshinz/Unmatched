@@ -179,3 +179,13 @@ bool Fighter::shouldUseOpponentBoostValue() const
 {
     return useOpponentBoostValue;
 }
+
+int Fighter::getOpponentBoostValue() const
+{
+    return OpponentBoostValue;
+}
+
+void Fighter::setOpponentBoostValue(int value)
+{
+    OpponentBoostValue = value;
+}

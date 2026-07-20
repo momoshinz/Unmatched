@@ -29,6 +29,7 @@ void LookIntoMyEyes::apply(Game &game, Fighter &fighter, Fighter &target, const 
 
     int opponentBoost = opponentCard->getBoost();
     fighter.enableOpponentBoostValue();
+    fighter.setOpponentBoostValue(opponentBoost);
     cout << "[+] Opponent's attack card boost: " << opponentBoost << "\n";
     cout << "[+] Adding " << opponentBoost << " to defense value!\n";
     cout << "========================================\n";

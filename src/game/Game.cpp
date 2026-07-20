@@ -33,9 +33,23 @@ void Game::initialize()
     {
         cout << "~> Enter age of Player 1 : ";
         cin >> age1;
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Plaese enter a number: ";
+            continue;
+        }
 
         cout << "~> Enter age of Player 2 : ";
         cin >> age2;
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Plaese enter a number: ";
+            continue;
+        }
 
         if (age1 < 0 || age2 < 0)
         {

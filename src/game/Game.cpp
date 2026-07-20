@@ -37,7 +37,7 @@ void Game::initialize()
         {
             cin.clear();
             cin.ignore(1000, '\n');
-            cout << "Plaese enter a number: ";
+            cout << "Plaese enter a number!\n";
             continue;
         }
 
@@ -47,7 +47,7 @@ void Game::initialize()
         {
             cin.clear();
             cin.ignore(1000, '\n');
-            cout << "Plaese enter a number: ";
+            cout << "Plaese enter a number!\n";
             continue;
         }
 

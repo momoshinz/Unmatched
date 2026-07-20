@@ -37,13 +37,11 @@ void MistForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card &
     cout << "\n========================================\n";
     cout << "\n-< MistForm >- ACTIVATED!\n";
 
-    cout << "\n========================================\n";
-    cout << "\n[.] Choose a space to go:\n";
-    cout << "========================================\n";
+    cout << "\n[.] Choose a home to go:\n";
     
     for(int i=0 ; i<targetSpaces.size() ; i++)
     {
-        cout << "\n> " << i+1 << ". home " << targetSpaces[i]->getId() << endl;
+        cout << "> " << i+1 << ". home " << targetSpaces[i]->getId() << endl;
     }
     cout << "\nEnter your choice:";
     int choice;

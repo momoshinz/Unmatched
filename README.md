@@ -23,10 +23,10 @@ This project was developed as an Object-Oriented Programming project and demonst
 Currently implemented fighters:
 
 - 🕵️ Sherlock Holmes
-  - Sherlock Holmes and Dr. Watson's abilities can never be disabled.
+  - special ability: Sherlock Holmes and Dr. Watson's abilities can never be disabled.
 
 - 🧛 Count Dracula
-  - At the start of your turn, you may deal 1 damage to a fighter adjacent to Dracula (even your sisters). if you do draw a card.
+  - special ability: At the start of your turn, you may deal 1 damage to a fighter adjacent to Dracula (even your sisters). if you do draw a card.
 
 
 ## 📂 Project Structure

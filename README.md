@@ -178,3 +178,7 @@ Special thanks to:
 - Restoration Games
 - FTXUI
 - CMake
+
+## 👨‍💻 Team Members
+[Mohadese Nejatbakhsh](https://github.com/momoshinz)
+[Dina Sharifypanah](https://github.com/Dinanooo)

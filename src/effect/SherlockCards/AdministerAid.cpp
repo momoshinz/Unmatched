@@ -108,7 +108,6 @@ void AdministerAid::apply(Game &game,
     {
         cout << "[!] Deck is empty. No card drawn.\n";
     }
-
     cout << "========================================\n";
 }
 

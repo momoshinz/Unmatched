@@ -180,5 +180,5 @@ Special thanks to:
 - CMake
 
 ## 👨‍💻 Team Members
-[Mohadese Nejatbakhsh](https://github.com/momoshinz)
-[Dina Sharifypanah](https://github.com/Dinanooo)
+- [Mohadese Nejatbakhsh](https://github.com/momoshinz)
+- [Dina Sharifypanah](https://github.com/Dinanooo)

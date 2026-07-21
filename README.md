@@ -1,6 +1,6 @@
 # 🎮 Unmatched Game
 
-Welcome to **Unmatched Game**, a digital adaptation of the famous *Unmatched* board game. This project recreates the strategic one-versus-one experience of the original game in a fully interactive terminal environment using modern C++.
+Welcome to **Unmatched Game**, a terminal-based adaptation of the famous *Unmatched* board game. This project recreates the strategic one-versus-one experience of the original game in a fully interactive terminal environment using modern C++.
 Players take control of legendary heroes such as **Sherlock Holmes** and **Count Dracula**, each equipped with unique abilities, sidekicks, and customized decks of cards. 
 Every match requires tactical movement, careful card management, and intelligent combat decisions to defeat the opposing hero.
 This project was developed as an Object-Oriented Programming project and demonstrates modular software architecture, game design principles, and clean C++ programming practices.

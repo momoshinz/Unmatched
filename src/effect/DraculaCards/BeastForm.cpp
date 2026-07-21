@@ -47,9 +47,9 @@ void BeastForm::apply(Game &game, Fighter &fighter, Fighter &target, const Card 
     vector<bool> isSelected(hand.getSize(), false);
     while(true)
     {
+        cout << "~~> ";
         int choice;
         cin >> choice;
-        cout << "~~> ";
         if(choice == 0)
         {
             break;

@@ -20,10 +20,16 @@ void Dracula::useAbility(Game& game, Player& player)
         throw runtime_error("\n[!] ERROR : Dracula is DEFEATED!\n");
     }
 
-    cout << "\nUse Dracula's ability? { 1 = Yes, 0 = No } : ";
+    cout << "\n[?] Use Dracula's ability? { 1 = Yes, 0 = No } : ";
 
     int answer;
     cin >> answer;
+
+    while(answer != 1 && answer != 0)
+    {
+        cout << "try a valid number :) ~~> ";
+        cin >> answer;
+    }
 
     if (answer == 0)
     {

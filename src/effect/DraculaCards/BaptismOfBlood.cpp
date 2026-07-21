@@ -23,7 +23,6 @@ void BaptismOfBlood::apply(Game &game, Fighter &fighter, Fighter &target, const 
     cout << "-< Baptism Of Blood >- ACTIVATED!\n";
 
     fighter.heal(2);
-    cout << endl;
     cout << "[+] " << fighter.getName() << " recovered 2 health!" << endl;
 
     Sisters* defeatedSister = nullptr;
@@ -84,17 +83,19 @@ void BaptismOfBlood::apply(Game &game, Fighter &fighter, Fighter &target, const 
             defeatedSister->heal(defeatedSister->getMaxHealth());
             defeatedSister->setPosition(targetSpace);
             targetSpace->setFighter(defeatedSister);
-            cout << "\n[+] " << defeatedSister->getName() << " has been revived in Dracula's zone.\n";
+            cout << "[+] " << defeatedSister->getName() << " has been revived in Dracula's zone.\n";
             cout << "========================================\n";
         }
         else
         {
             cout << "\n[!] ERROR : No empty home in Dracula's zone to revive Sister!\n";
+            cout << "========================================\n";
         }
     }
     else
     {
         cout << "\n[!] ERROR : No defeated Sister to revive.\n";
+        cout << "========================================\n";
     }
 }
 

@@ -7,6 +7,7 @@
 #include "card/Card.h"
 #include <iostream>
 #include <stdexcept>
+#include <unordered_map>
 using namespace std;
 
 Game::Game()
@@ -33,7 +34,7 @@ void Game::initialize()
     {
         cout << "~> Enter age of Player 1 : ";
         cin >> age1;
-        if(cin.fail())
+        if (cin.fail())
         {
             cin.clear();
             cin.ignore(1000, '\n');
@@ -43,7 +44,7 @@ void Game::initialize()
 
         cout << "~> Enter age of Player 2 : ";
         cin >> age2;
-        if(cin.fail())
+        if (cin.fail())
         {
             cin.clear();
             cin.ignore(1000, '\n');
@@ -563,6 +564,7 @@ void Game::maneuver()
     }
 
     vector<Fighter *> fighters;
+
     if (currentPlayer->getHero() != nullptr && currentPlayer->getHero()->isAlive())
     {
         fighters.push_back(currentPlayer->getHero());
@@ -578,133 +580,180 @@ void Game::maneuver()
 
     if (fighters.empty())
     {
-        throw runtime_error("\n[!] ERROR : No fighter available!\n");
+        throw runtime_error("\n[!] ERROR : No fighter available! :<\n");
     }
 
-    int fighterChoice = 0;
-    while (fighterChoice < 1 || fighterChoice > fighters.size())
+    currentPlayer->drawCardToHand();
+    cout << "\n[+] Drew one card.\n";
+
+    unordered_map<Fighter *, int> movedDistance;
+
+    for (Fighter *fighter : fighters)
     {
-        cout << "\n========== Choose Fighter ==========\n";
+        movedDistance[fighter] = 0;
+    }
+
+    while (true)
+    {
+        cout << "\n==========< Choose Fighter To Move >==========\n\n";
+
         for (int i = 0; i < fighters.size(); i++)
         {
-            cout << i + 1 << ". " << fighters[i]->getName() << endl;
+            cout << i + 1 << ". " << fighters[i]->getName();
+
+            if (movedDistance[fighters[i]] >= fighters[i]->getMovement())
+                cout << " { Movement Finished }";
+
+            cout << endl;
         }
+
+        cout << "0. Finish Maneuver\n";
+
+        int fighterChoice;
         cout << "~~> ";
         cin >> fighterChoice;
 
+        if (fighterChoice == 0)
+            break;
+
         if (fighterChoice < 1 || fighterChoice > fighters.size())
         {
-            cout << "[!] Invalid choice! Try again.\n";
+            cout << "\n[!] Invalid choice! :<\n";
+            continue;
         }
-    }
 
-    Fighter *fighter = fighters[fighterChoice - 1];
+        Fighter *fighter = fighters[fighterChoice - 1];
 
-    currentPlayer->drawCardToHand();
-    cout << "[+] Drew one card.\n";
-
-    int answer = 0;
-    while (answer < 1 || answer > 2)
-    {
-        cout << "\n[?] Do you want to move " << fighter->getName()
-             << "\n> 1. Yes :>"
-             << "\n> 2. No not in mood :<\n ~> ";
-        cin >> answer;
-
-        if (answer < 1 || answer > 2)
+        if (movedDistance[fighter] >= fighter->getMovement())
         {
-            cout << "[!] Invalid choice! Please enter 1 or 2.\n";
+            cout << "\n[!] "
+                 << fighter->getName()
+                 << " has already used ALL of its movement in this maneuver.. :)\n";
+            continue;
         }
-    }
 
-    if (answer == 1)
-    {
-        int totalMovement = fighter->getMovement();
+        int answer = 0;
+
+        while (answer < 1 || answer > 2)
+        {
+            cout << "\n[?] Move "
+                 << fighter->getName()
+                 << " ?\n";
+
+            cout << "1. Yes\n";
+            cout << "2. No\n";
+            cout << "~~> ";
+
+            cin >> answer;
+        }
+
+        if (answer == 2)
+            continue;
+
+        int remainingMovement = fighter->getMovement() - movedDistance[fighter];
+
+        int totalMovement = remainingMovement;
 
         if (!currentPlayer->getHand().isEmpty())
         {
             int boostAnswer = 0;
+
             while (boostAnswer < 1 || boostAnswer > 2)
             {
-                cout << "\n[?] Do you want to use a card's BOOST to increase movement?"
-                     << "\n> 1. Yes :>"
-                     << "\n> 2. No :<\n ~> ";
-                cin >> boostAnswer;
+                cout << "\n[?] Use BOOST card?\n";
+                cout << "1. Yes\n";
+                cout << "2. No\n";
+                cout << "~~> ";
 
-                if (boostAnswer < 1 || boostAnswer > 2)
-                {
-                    cout << "[!] Invalid choice! Please enter 1 or 2.\n";
-                }
+                cin >> boostAnswer;
             }
 
             if (boostAnswer == 1)
             {
-                cout << "\n========== Choose a card to discard for BOOST ==========\n";
+                cout << "\n========== HAND ==========\n";
                 currentPlayer->getHand().display();
 
                 int cardIndex = 0;
+
                 while (cardIndex < 1 || cardIndex > currentPlayer->getHand().getSize())
                 {
-                    cout << "Choose card to discard (1 to " << currentPlayer->getHand().getSize() << "): ";
+                    cout << "> Choose a card to burn : ";
                     cin >> cardIndex;
-
-                    if (cardIndex < 1 || cardIndex > currentPlayer->getHand().getSize())
-                    {
-                        cout << "[!] Invalid choice! Try again.\n";
-                    }
                 }
 
                 Card *discardedCard = currentPlayer->getHand().removeCard(cardIndex - 1);
 
                 if (discardedCard != nullptr)
                 {
-                    int boostValue = discardedCard->getBoost();
-                    totalMovement += boostValue;
+                    totalMovement += discardedCard->getBoost();
+
+                    cout << "\n[+] BOOST = "
+                         << discardedCard->getBoost()
+                         << endl;
 
                     currentPlayer->getDiscardPile().addCard(discardedCard);
-
-                    cout << "[+] Discarded: " << discardedCard->getName() << " (BOOST: " << boostValue << ")\n";
-                    cout << "[+] Total movement increased to " << totalMovement << "!\n";
                 }
             }
         }
 
-        cout << "\n> Move Your fighter according to it's movement range.\n";
-        vector<Space *> availableMoves = board.getAvailableMoves(fighter, totalMovement);
+        auto availableMoves = board.getAvailableMovesWithDistance(fighter, totalMovement);
+
         if (availableMoves.empty())
         {
-            cout << "\n[.] No available movement.\n";
+            cout << "\n[!] No available movement. :<\n";
+            continue;
         }
+
+        cout << "\n========== Available Homes ==========\n\n";
+
+        for (int i = 0; i < availableMoves.size(); i++)
+        {
+            cout << i + 1
+                 << ". Home "
+                 << availableMoves[i].first->getId()
+                 << " { "
+                 << availableMoves[i].second
+                 << " step";
+
+            if (availableMoves[i].second > 1)
+                cout << "s";
+
+            cout << " }\n";
+        }
+
+        int choice = 0;
+
+        while (choice < 1 || choice > availableMoves.size())
+        {
+            choice = ui.chooseSpace();
+
+            if (choice < 1 || choice > availableMoves.size())
+            {
+                cout << "\n[!] Invalid choice! :<\n";
+            }
+        }
+
+        board.moveFighter(fighter, availableMoves[choice - 1].first);
+
+        movedDistance[fighter] += availableMoves[choice - 1].second;
+
+        ui.renderScreen(*this);
+
+        cout << "\n[+] "
+             << fighter->getName()
+             << " moved successfully.\n";
+
+        if (fighter->getMovement() - movedDistance[fighter] < 0)
+        {
+            cout << "[*] Remaining movement : 0" << endl;
+        }
+
         else
         {
-            cout << "\n========== Available Homes ==========\n";
-
-            for (size_t i = 0; i < availableMoves.size(); i++)
-            {
-                cout << i + 1
-                     << ". Home "
-                     << availableMoves[i]->getId()
-                     << endl;
-            }
-
-            int choice = 0;
-            while (choice < 1 || choice > availableMoves.size())
-            {
-                choice = ui.chooseSpace();
-                if (choice < 1 || choice > availableMoves.size())
-                {
-                    cout << "\n[!] Invalid choice! Try again.\n";
-                }
-            }
-
-            board.moveFighter(fighter, availableMoves[choice - 1]);
-            ui.renderScreen(*this);
-            cout << "\n[+] " << fighter->getName() << " moved successfully.\n";
+            cout << "[*] Remaining movement : "
+                 << fighter->getMovement() - movedDistance[fighter]
+                 << endl;
         }
-    }
-    else
-    {
-        cout << "\n[.] " << fighter->getName() << " stayed in place.\n";
     }
 
     turnManager.useAction();
@@ -1089,7 +1138,6 @@ void Game::run()
             "Exit"};
 
     int selected = 0;
-
 
     try
     {

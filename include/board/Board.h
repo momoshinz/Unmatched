@@ -29,6 +29,7 @@ public:
     vector<int> getZoneHomes(ZoneType zone) const;
 
     vector<Space *> getAvailableMoves(Fighter *fighter, int maxStep) const;
+    vector<pair<Space *, int>> getAvailableMovesWithDistance(Fighter *fighter, int maxStep) const;
     bool moveFighter(Fighter *fighter, Space *destination);
     bool swapFighters(Fighter *first, Fighter *second);
 };

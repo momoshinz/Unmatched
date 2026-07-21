@@ -328,6 +328,71 @@ vector<Space *> Board::getAvailableMoves(Fighter *fighter, int maxStep) const
     return result;
 }
 
+vector<pair<Space *, int>> Board::getAvailableMovesWithDistance(Fighter *fighter, int maxStep) const
+{
+    vector<pair<Space *, int>> result;
+    if (fighter == nullptr)
+    {
+        return result;
+    }
+    Space *start = fighter->getPosition();
+    if (start == nullptr)
+    {
+        return result;
+    }
+    queue<pair<Space *, int>> q;
+    set<Space *> visited;
+
+    q.push({start, 0});
+    visited.insert(start);
+
+    while (!q.empty())
+    {
+        Space *current = q.front().first;
+        int distance = q.front().second;
+        q.pop();
+
+        if (distance == maxStep)
+        {
+            continue;
+        }
+        vector<Space *> nextSpaces = current->getNeighbors();
+
+        if (current->hasSecretPassage())
+        {
+            for (auto space : spaces)
+            {
+                if (space != current && space->hasSecretPassage())
+                {
+                    nextSpaces.push_back(space);
+                }
+            }
+        }
+        for (auto next : nextSpaces)
+        {
+            if (visited.count(next))
+            {
+                continue;
+            }
+            visited.insert(next);
+
+            Fighter *user = next->getFighter();
+            if (user == nullptr)
+            {
+                result.push_back({next, distance + 1});
+                q.push({next, distance + 1});
+                continue;
+            }
+            if (user->getOwner() == fighter->getOwner())
+            {
+                q.push({next, distance + 1});
+                continue;
+            }
+        }
+    }
+    return result;
+}
+
 bool Board::moveFighter(Fighter *fighter, Space *destination)
 {
     if (fighter == nullptr || destination == nullptr)

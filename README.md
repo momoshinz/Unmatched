@@ -107,7 +107,7 @@ Main modules include:
 - Fighter
 - Board
 - Combat System
-- Card Syste
+- Card System
 - User Interface (UI)
 - Effects
 

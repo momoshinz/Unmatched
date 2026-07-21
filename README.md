@@ -30,7 +30,7 @@ Currently implemented fighters:
 
 
 ## 📂 Project Structure
-
+```
 Unmatched/
 ├── CMakeLists.txt
 ├── README.md
@@ -101,7 +101,7 @@ Unmatched/
     └── ui/
         ├── MainMenu.cpp
         └── TerminalUI.cpp
-
+```
 ## 🛠 Technologies Used
 - C++17
 - CMake

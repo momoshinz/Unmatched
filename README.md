@@ -31,22 +31,76 @@ Currently implemented fighters:
 
 ## 📂 Project Structure
 
-```
 Unmatched/
-│├── include
-├── board/
-├── card/
-├── effect/
-├── fighter/
-├── game/
-├── player/
-├── ui/
-├── utils/
-│
 ├── CMakeLists.txt
 ├── README.md
-└── main.cpp
-```
+├── .gitignore
+├── .gitmodules
+├── external/
+│   └── ftxui/
+├── include/
+│   ├── board/
+│   │   ├── Board.h
+│   │   └── Space.h
+│   ├── card/
+│   │   ├── Card.h
+│   │   ├── Deck.h
+│   │   ├── DiscardPile.h
+│   │   └── Hand.h
+│   ├── effect/
+│   │   ├── Effect.h
+│   │   ├── DraculaCards/
+│   │   └── SherlockCards/
+│   ├── fighter/
+│   │   ├── Fighter.h
+│   │   ├── Hero.h
+│   │   ├── Sidekick.h
+│   │   ├── Dracula.h
+│   │   ├── Sherlock.h
+│   │   ├── Sisters.h
+│   │   └── DrWatson.h
+│   ├── game/
+│   │   ├── Game.h
+│   │   ├── CombatSystem.h
+│   │   └── TurnManager.h
+│   ├── player/
+│   │   └── Player.h
+│   ├── ui/
+│   │   ├── MainMenu.h
+│   │   ├── TerminalUI.h
+│   │   └── MapTemplate.h
+│   └── utils/
+└── src/
+    ├── main.cpp
+    ├── board/
+    │   ├── Board.cpp
+    │   └── Space.cpp
+    ├── card/
+    │   ├── Card.cpp
+    │   ├── Deck.cpp
+    │   ├── DiscardPile.cpp
+    │   └── Hand.cpp
+    ├── effect/
+    │   ├── Effect.cpp
+    │   ├── DraculaCards/
+    │   └── SherlockCards/
+    ├── fighter/
+    │   ├── Fighter.cpp
+    │   ├── Hero.cpp
+    │   ├── Sidekick.cpp
+    │   ├── Dracula.cpp
+    │   ├── Sherlock.cpp
+    │   ├── Sisters.cpp
+    │   └── DrWatson.cpp
+    ├── game/
+    │   ├── Game.cpp
+    │   ├── CombatSystem.cpp
+    │   └── TurnManager.cpp
+    ├── player/
+    │   └── Player.cpp
+    └── ui/
+        ├── MainMenu.cpp
+        └── TerminalUI.cpp
 
 ## 🛠 Technologies Used
 - C++17

@@ -8,12 +8,7 @@
 
 using namespace std;
 
-void CounterPunch::apply(Game &game,
-                         Fighter &fighter,
-                         Fighter &target,
-                         const Card &self,
-                         Card *opponentCard,
-                         bool didUserWin)
+void CounterPunch::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self, Card *opponentCard, bool didUserWin)
 {
 
     if (!fighter.isHero())
@@ -44,9 +39,7 @@ void CounterPunch::apply(Game &game,
     else
     {
         cout << "\n[!] Counter Punch CNCELED.\n";
-        cout << fighter.getName()
-             << " is not adjacent to "
-             << target.getName() << "!\n";
+        cout << fighter.getName() << " is not adjacent to " << target.getName() << "!\n";
     }
 }
 

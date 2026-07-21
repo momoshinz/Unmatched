@@ -60,11 +60,8 @@ void Dracula::useAbility(Game& game, Player& player)
 
     for (size_t i = 0; i < adjacentFighters.size(); i++)
     {
-        cout << i + 1 << ". "
-             << adjacentFighters[i]->getName()
-             << " { HP: "
-             << adjacentFighters[i]->getHealth()
-             << " }\n";
+        cout << i + 1 << ". " << adjacentFighters[i]->getName() << " { HP: " 
+             << adjacentFighters[i]->getHealth() << " }\n";
     }
     cout << "~~> ";
     int choice;

@@ -27,8 +27,7 @@ void CombatSystem::setGame(Game *game)
     currentGame = game;
 }
 
-bool CombatSystem::isInSameZone(const Fighter *attacker,
-                                const Fighter *defender) const
+bool CombatSystem::isInSameZone(const Fighter *attacker, const Fighter *defender) const
 {
     if (attacker == nullptr || defender == nullptr)
     {
@@ -47,8 +46,7 @@ bool CombatSystem::isInSameZone(const Fighter *attacker,
     return currentGame->getBoard().sameZone(first, second);
 }
 
-bool CombatSystem::isInAttackRange(const Fighter *attacker,
-                                   const Fighter *defender) const
+bool CombatSystem::isInAttackRange(const Fighter *attacker, const Fighter *defender) const
 {
     if (attacker == nullptr || defender == nullptr)
     {
@@ -62,8 +60,7 @@ bool CombatSystem::isInAttackRange(const Fighter *attacker,
 
     if (attacker->isRanged())
     {
-        return attacker->isAdjacent(defender, currentGame->getBoard()) ||
-               isInSameZone(attacker, defender);
+        return attacker->isAdjacent(defender, currentGame->getBoard()) || isInSameZone(attacker, defender);
     }
 
     return false;
@@ -104,14 +101,12 @@ bool CombatSystem::isAttackValid() const
     return true;
 }
 
-int CombatSystem::calculateFinalAttackValue(const Card &card,
-                                            const Fighter &user) const
+int CombatSystem::calculateFinalAttackValue(const Card &card, const Fighter &user) const
 {
     return card.getCombatValue() + user.getTempAttackBoost();
 }
 
-int CombatSystem::calculateFinalDefenseValue(const Card &card,
-                                             const Fighter &user) const
+int CombatSystem::calculateFinalDefenseValue(const Card &card, const Fighter &user) const
 {
     if (user.shouldUseOpponentBoostValue())
     {
@@ -122,8 +117,7 @@ int CombatSystem::calculateFinalDefenseValue(const Card &card,
     return card.getCombatValue();
 }
 
-int CombatSystem::calculateDamage(int attackValue,
-                                  int defenceValue) const
+int CombatSystem::calculateDamage(int attackValue, int defenceValue) const
 {
     int damage = attackValue - defenceValue;
 
@@ -135,8 +129,7 @@ int CombatSystem::calculateDamage(int attackValue,
     return damage;
 }
 
-void CombatSystem::applyDamage(int damage,
-                               Fighter &defender)
+void CombatSystem::applyDamage(int damage, Fighter &defender)
 {
     if (damage <= 0)
     {
@@ -145,18 +138,10 @@ void CombatSystem::applyDamage(int damage,
 
     defender.takeDamage(damage);
 
-    cout << "\n[-] "
-         << defender.getName()
-         << " takes "
-         << damage
-         << " damage!\n";
+    cout << "\n[-] " << defender.getName() << " takes " << damage << " damage!\n";
 }
 
-void CombatSystem::applyEffects(Timing timing,
-                                Fighter &user,
-                                Fighter &target,
-                                Card &card,
-                                bool didUserWin)
+void CombatSystem::applyEffects(Timing timing, Fighter &user, Fighter &target, Card &card, bool didUserWin)
 {
     if (card.isEffectsCanceled())
     {
@@ -201,22 +186,15 @@ void CombatSystem::applyEffects(Timing timing,
            }
     }
 
-    effect->apply(*currentGame,
-                  user,
-                  target,
-                  card,
-                  opponentCard,
-                  didUserWin);
+    effect->apply(*currentGame, user, target, card, opponentCard, didUserWin);
 }
 
-bool CombatSystem::canFighterPlayCard(const Fighter &fighter,
-                                      const Card &card) const
+bool CombatSystem::canFighterPlayCard(const Fighter &fighter, const Card &card) const
 {
     return card.isPlayableBy(fighter);
 }
 
-void CombatSystem::resolveCombat(Game &game, Fighter &attacker, Fighter &defender,
-                                 Card &attackCard, Card *defenceCard)
+void CombatSystem::resolveCombat(Game &game, Fighter &attacker, Fighter &defender, Card &attackCard, Card *defenceCard)
 {
     this->currentGame = &game;
     this->attacker = &attacker;
@@ -232,15 +210,11 @@ void CombatSystem::resolveCombat(Game &game, Fighter &attacker, Fighter &defende
         throw logic_error("\n[!] ERROR : Invalid attack!\n");
     }
 
-    cout << "\n> Attacker : "
-         << attacker.getName()
-         << endl;
+    cout << "\n> Attacker : " << attacker.getName() << endl;
 
     attackCard.display();
 
-    cout << "\n> Defender : "
-         << defender.getName()
-         << endl;
+    cout << "\n> Defender : " << defender.getName() << endl;
 
     if (defenceCard != nullptr)
     {
@@ -253,39 +227,22 @@ void CombatSystem::resolveCombat(Game &game, Fighter &attacker, Fighter &defende
 
     if (defenceCard != nullptr && !defenceCard->isEffectsCanceled())
     {
-        applyEffects(Timing::Immediately,
-                     defender,
-                     attacker,
-                     *defenceCard,
-                     false);
+        applyEffects(Timing::Immediately, defender, attacker, *defenceCard, false);
     }
 
     if(!attackCard.isEffectsCanceled())
     {
-        applyEffects(Timing::Immediately,
-                 attacker,
-                 defender,
-                 attackCard,
-                 false);
+        applyEffects(Timing::Immediately, attacker, defender, attackCard, false);
     }
 
     if (defenceCard != nullptr && !defenceCard->isEffectsCanceled())
     {
-        applyEffects(Timing::DuringCombat,
-                     defender,
-                     attacker,
-                     *defenceCard,
-                     false);
+        applyEffects(Timing::DuringCombat, defender, attacker, *defenceCard, false);
     }
 
     if(!attackCard.isEffectsCanceled())
     {
-        applyEffects(Timing::DuringCombat,
-                 attacker,
-                 defender,
-                 attackCard,
-                 false);
-
+        applyEffects(Timing::DuringCombat, attacker, defender, attackCard, false);
     }
     int attackValue;
 
@@ -316,13 +273,9 @@ void CombatSystem::resolveCombat(Game &game, Fighter &attacker, Fighter &defende
         defenceValue = 0;
     }
 
-    cout << "\n-> Attack Value : "
-         << attackValue
-         << endl;
+    cout << "\n-> Attack Value : " << attackValue << endl;
 
-    cout << "-> Defense Value : "
-         << defenceValue
-         << endl;
+    cout << "-> Defense Value : " << defenceValue << endl;
 
     int damage = calculateDamage(attackValue, defenceValue);
     bool attackerWon = (damage > 0);
@@ -330,20 +283,12 @@ void CombatSystem::resolveCombat(Game &game, Fighter &attacker, Fighter &defende
 
     if (defenceCard != nullptr && !defenceCard->isEffectsCanceled())
     {
-        applyEffects(Timing::AfterCombat,
-                     defender,
-                     attacker,
-                     *defenceCard,
-                     !attackerWon);
+        applyEffects(Timing::AfterCombat, defender, attacker, *defenceCard, !attackerWon);
     }
 
     if(!attackCard.isEffectsCanceled())
     {
-        applyEffects(Timing::AfterCombat,
-                 attacker,
-                 defender,
-                 attackCard,
-                 attackerWon);
+        applyEffects(Timing::AfterCombat, attacker, defender, attackCard, attackerWon);
 
     }
     attackCard.resetEffectsCancel();
@@ -370,21 +315,9 @@ void CombatSystem::resolveCombat(Game &game, Fighter &attacker, Fighter &defende
     cout << "\n========== COMBAT FINISHED ==========\n";
     cout << "\n[ - RESULT - ]\n";
 
-    cout << "[o] "
-         << attacker.getName()
-         << " DEALT "
-         << damage
-         << " damage to "
-         << defender.getName()
-         << ".\n";
+    cout << "[o] " << attacker.getName() << " DEALT " << damage << " damage to " << defender.getName() << ".\n";
 
-    cout << "[o] "
-         << defender.getName()
-         << " Health : "
-         << defender.getHealth()
-         << "/"
-         << defender.getMaxHealth()
-         << endl;
+    cout << "[o] " << defender.getName() << " Health : " << defender.getHealth() << "/" << defender.getMaxHealth() << endl;
 
     cout << "\n[ - WINNER - ]\n";
     if (damage > 0)
@@ -399,8 +332,6 @@ void CombatSystem::resolveCombat(Game &game, Fighter &attacker, Fighter &defende
 
     if (!defender.isAlive())
     {
-        cout << "-{ "
-             << defender.getName()
-             << " has been DEFEATED! }-\n";
+        cout << "-{ " << defender.getName() << " has been DEFEATED! }-\n";
     }
 }

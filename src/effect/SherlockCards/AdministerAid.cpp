@@ -10,12 +10,7 @@
 
 using namespace std;
 
-void AdministerAid::apply(Game &game,
-                          Fighter &fighter,
-                          Fighter &target,
-                          const Card &self,
-                          Card *opponentCard,
-                          bool didUserWin)
+void AdministerAid::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self, Card *opponentCard, bool didUserWin)
 {
     if (fighter.isHero())
     {
@@ -72,14 +67,10 @@ void AdministerAid::apply(Game &game,
 
     for (size_t i = 0; i < availableSpaces.size(); i++)
     {
-        cout << i + 1
-             << ". Home "
-             << availableSpaces[i]->getId()
-             << endl;
+        cout << i + 1 << ". Home " << availableSpaces[i]->getId() << endl;
     }
 
     int choice;
-
     cout << "\n> Choose destination : ";
     cin >> choice;
 
@@ -90,15 +81,11 @@ void AdministerAid::apply(Game &game,
 
     watson->moveTo(availableSpaces[choice - 1]);
 
-    cout << "\n[o] Dr. Watson moved to Home "
-         << availableSpaces[choice - 1]->getId()
-         << endl;
+    cout << "\n[o] Dr. Watson moved to Home " << availableSpaces[choice - 1]->getId() << endl;
 
     sherlock->heal(1);
 
-    cout << "[+] "
-         << sherlock->getName()
-         << " healed 1 health.\n";
+    cout << "[+] " << sherlock->getName() << " healed 1 health.\n";
 
     if (player->drawCardToHand())
     {

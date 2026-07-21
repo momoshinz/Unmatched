@@ -7,12 +7,7 @@
 
 using namespace std;
 
-void EducationNeverEnds::apply(Game &game,
-                               Fighter &fighter,
-                               Fighter &target,
-                               const Card &self,
-                               Card *opponentCard,
-                               bool didUserWin)
+void EducationNeverEnds::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self, Card *opponentCard, bool didUserWin)
 {
     cout << "\n========================================\n";
     cout << "-< Education Never Ends >- ACTIVATED!\n";
@@ -22,8 +17,9 @@ void EducationNeverEnds::apply(Game &game,
         bool ok = target.getOwner()->drawCardToHand();
 
         if (ok)
-            cout << "[+] " << target.getOwner()->getHero()->getName()
-                 << " drew 1 card.\n";
+        {
+            cout << "[+] " << target.getOwner()->getHero()->getName() << " drew 1 card.\n";
+        }
     }
     else
     {
@@ -35,11 +31,8 @@ void EducationNeverEnds::apply(Game &game,
         if (fighter.getOwner()->drawCardToHand())
             drawn++;
 
-        cout << "[+] " << fighter.getName()
-             << " drew " << drawn << " card"
-             << (drawn == 1 ? "" : "s") << ".\n";
+        cout << "[+] " << fighter.getName() << " drew " << drawn << " card" << (drawn == 1 ? "" : "s") << ".\n";
     }
-
     cout << "========================================\n";
 }
 

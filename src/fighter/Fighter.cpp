@@ -132,8 +132,7 @@ bool Fighter::isInSameZone(const Fighter *other, const Board &board) const
     if (position == nullptr || other->position == nullptr)
         return false;
 
-    return board.sameZone(position->getId(),
-                          other->position->getId());
+    return board.sameZone(position->getId(), other->position->getId());
 }
 
 void Fighter::setOwner(Player *owner)

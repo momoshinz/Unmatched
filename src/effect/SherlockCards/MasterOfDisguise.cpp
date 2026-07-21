@@ -9,12 +9,7 @@
 
 using namespace std;
 
-void MasterOfDisguise::apply(Game &game,
-                             Fighter &fighter,
-                             Fighter &target,
-                             const Card &self,
-                             Card *opponentCard,
-                             bool didUserWin)
+void MasterOfDisguise::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self, Card *opponentCard, bool didUserWin)
 {
     if (!fighter.isHero())
     {
@@ -54,9 +49,7 @@ void MasterOfDisguise::apply(Game &game,
 
     for (int i = 0; i < enemyFighters.size(); i++)
     {
-        cout << i + 1 << ". "
-             << enemyFighters[i]->getName()
-             << endl;
+        cout << i + 1 << ". " << enemyFighters[i]->getName() << endl;
     }
     cout << "~~> ";
     int choice;
@@ -87,20 +80,11 @@ void MasterOfDisguise::apply(Game &game,
 
     cout << "-< Master Of Disguise >- ACTIVATED!\n";
 
-    cout << fighter.getName()
-         << " swapped places with "
-         << enemyHero->getName()
-         << ".\n";
+    cout << fighter.getName() << " swapped places with " << enemyHero->getName() << ".\n";
 
-    cout << enemyHero->getName()
-         << " takes 1 damage!\n";
+    cout << enemyHero->getName() << " takes 1 damage!\n";
 
-    cout << enemyHero->getName()
-         << "'s Health : "
-         << enemyHero->getHealth()
-         << "/"
-         << enemyHero->getMaxHealth()
-         << endl;
+    cout << enemyHero->getName() << "'s Health : " << enemyHero->getHealth() << "/" << enemyHero->getMaxHealth() << endl;
 
     cout << "========================================\n";
 }

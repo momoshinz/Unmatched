@@ -8,12 +8,7 @@
 
 using namespace std;
 
-void EliminateTheImpossible::apply(Game &game,
-                                   Fighter &fighter,
-                                   Fighter &target,
-                                   const Card &self,
-                                   Card *opponentCard,
-                                   bool didUserWin)
+void EliminateTheImpossible::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self, Card *opponentCard, bool didUserWin)
 {
     if (!fighter.isHero())
     {
@@ -60,9 +55,7 @@ void EliminateTheImpossible::apply(Game &game,
 
     Card *burnedCard = opponentHand.removeCard(choice - 1);
 
-    cout << "\n[-] "
-         << burnedCard->getName()
-         << " GOT BURNED!\n";
+    cout << "\n[-] " << burnedCard->getName() << " GOT BURNED!\n";
 
     delete burnedCard;
 

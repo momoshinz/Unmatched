@@ -419,13 +419,11 @@ void TerminalUI::drawHomes(vector<string> &canvas) const
     }
 }
 
-void TerminalUI::showBoard(const Board &board,
-                           const vector<Player *> &players) const
+void TerminalUI::showBoard(const Board &board, const vector<Player *> &players) const
 {
 }
 
-vector<string> TerminalUI::buildBoard(const Board &board,
-                                      const vector<Player *> &players) const
+vector<string> TerminalUI::buildBoard(const Board &board, const vector<Player *> &players) const
 {
     vector<string> canvas = MAP_TEMPLATE;
 

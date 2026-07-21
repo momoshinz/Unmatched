@@ -8,12 +8,7 @@
 
 using namespace std;
 
-void StudyMethods::apply(Game &game,
-                         Fighter &fighter,
-                         Fighter &target,
-                         const Card &self,
-                         Card *opponentCard,
-                         bool attackerWon)
+void StudyMethods::apply(Game &game, Fighter &fighter, Fighter &target,const Card &self, Card *opponentCard, bool attackerWon)
 {
     Player *player = fighter.getOwner();
 

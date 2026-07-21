@@ -10,12 +10,7 @@
 
 using namespace std;
 
-void FixedPoint::apply(Game &game,
-                       Fighter &fighter,
-                       Fighter &target,
-                       const Card &self,
-                       Card *opponentCard,
-                       bool attackerWon)
+void FixedPoint::apply(Game &game, Fighter &fighter, Fighter &target, const Card &self, Card *opponentCard, bool attackerWon)
 {
     if (fighter.isHero())
     {
